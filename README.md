@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Watermark Image API with Next.js and Sharp
 
-## Getting Started
+## Overview
 
-First, run the development server:
+This project demonstrates how to create a custom API endpoint in a Next.js application to add watermarks to images using the Sharp image processing library. The project features an API route that processes an image by adding text-based watermarks and a React component for fetching and displaying the watermarked image.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Custom API Endpoint:** Built using Next.js API routes to handle image processing.
+- **Watermarking with Sharp:** Applies text-based watermarks with high performance and quality.
+- **Client-Side Integration:** A React component fetches and displays the watermarked image.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## How It Works
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### API Endpoint
 
-## Learn More
+- **Path:** `/api/watermark`
+- **Method:** `GET`
+- **Parameters:**
+  - `imageUrl`: Path to the image file (relative to the `public` directory).
+  - `watermarkText`: Text to be used as the watermark.
 
-To learn more about Next.js, take a look at the following resources:
+**Functionality:**
+1. **Retrieve Parameters:** Parses the `imageUrl` and `watermarkText` from the request query parameters.
+2. **Load Image:** Reads the image file from the `public` directory.
+3. **Apply Watermark:** Uses Sharp to overlay the watermark text on the image.
+4. **Respond with Image:** Returns the watermarked image as a JPEG file.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### React Component
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- **File:** `page.js`
+- **Function:** Fetches and displays the watermarked image.
 
-## Deploy on Vercel
+**Functionality:**
+1. **Fetch Watermarked Image:** Uses the `fetch` API to call the `/api/watermark` endpoint with the sample image and watermark text.
+2. **Display Image:** Updates the component state with the URL of the fetched image and renders it using the Next.js `Image` component.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Setup and Installation
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+1. **Clone the Repository:**
+
+   ```bash
+   git clone https://github.com/your-username/your-repo-name.git
+
+
+Navigate to the Project Directory, Install Dependencies, Start the Development Server, Open your browser and navigate to http://localhost:3000. You should see the watermarked image displayed.
